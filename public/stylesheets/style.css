@@ -1,0 +1,17 @@
+body {
+  padding: 0;
+  margin: 0;
+  height: 100vh; /* Mengisi tinggi layar penuh */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #007bff; /* Warna latar belakang fallback */
+  background-image: linear-gradient(to bottom, #007bff, #74b9ff); /* Gradien biru */
+  font-family: Arial, sans-serif;
+  color: #fff; /* Warna teks putih */
+}
+
+
+a {
+  color: #00B7FF;
+}

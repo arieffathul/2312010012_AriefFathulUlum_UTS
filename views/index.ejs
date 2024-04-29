@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h2 class="text-center">CRUD DATA TIMNAS</h2>
+      <div class="row mt-3">
+        <!-- Alert -->
+        <div class="col-auto col-lg-12 mt-2">
+          <% if(alert.message != "") { %>
+          <div class="alert alert-<%= alert.status %>" role="alert">
+            <%= alert.message %>
+          </div>
+          <% } %>
+        </div>
+        <!-- Table -->
+        <div class="col-auto col-lg-12 mt-2"><%- include('table.ejs') %></div>
+      </div>
+    </div>
+    <!-- Add Modal -->
+    <%- include('add_modal.ejs') %>
+    <%- include('edit_modal.ejs') %>
+    <!-- JS -->
+    <%- include('js.ejs') %>
+  </body>
+  <script>
+        /* Menampilkan modal dan memanggil tag table yang memiliki id dataTable
+       class button-update di class tag a Edit di file table.ejs */
+      $("#dataTable").on("click", ".button-update", function () {
+      // membuat variabel untuk mengambil data-id, data-name, dstnya yang sudah dibuat di file table.ejs di bagian tag a edit
+      let id = $(this).data("id");
+      let nama = $(this).data("nama");
+      let noPunggung = $(this).data("noPunggung");
+      let posisi = $(this).data("posisi");
+      let foto = $(this).data("foto");
+      let klub = $(this).data("klub");
+      let naturalisasi = $(this).data("naturalisasi");
+      /*
+       * memanggil id edit-modal yang ada di file edit_modal.ejs
+       * dan membuat fungsi dari method
+       */
+      $("#edit-modal").modal("show");
+      /* Lalu Mengirim  id, name, dstnya melalu class disamping form-control tag input
+         dan valuenya mengambil dari setiap let yang dideklarasikan di atas */
+      $(".id").val(id);
+      $(".nama").val(nama);
+      $(".noPunggung").val(noPunggung);
+      $(".posisi").val(posisi);
+      $(".foto").val(foto);
+      $(".klub").val(klub);
+      $(".naturalisasi").val(naturalisasi);
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+      const elements = document.querySelectorAll('.tanggal-lahir');
+      elements.forEach(element => {
+        const originalDate = element.textContent.trim();
+        const formattedDate = formatDate(originalDate);
+        element.textContent = formattedDate;
+      });
+  
+      function formatDate(dateString) {
+        const months = [
+          'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+          'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+        ];
+        const date = new Date(dateString);
+        const day = date.getDate();
+        const month = months[date.getMonth()];
+        const year = date.getFullYear();
+  
+        return `${day} ${month} ${year}`;
+      }
+    });
+  </script>  
+</html>

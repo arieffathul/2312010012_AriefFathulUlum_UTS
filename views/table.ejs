@@ -1,0 +1,76 @@
+<style>
+    /* Menambahkan margin kanan pada tombol "Edit" */
+    .btn {
+      margin-right: 10px; /* Memberikan margin kanan sebesar 5px */
+    }
+</style>
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <!-- Button trigger modal -->
+      <button
+        type="button"
+        class="btn btn-outline-primary btn-sm"
+        data-toggle="modal"
+        data-target="#add-modal"
+      >
+        Add
+      </button>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table
+          class="table table-bordered"
+          id="dataTable"
+          width="100%"
+          cellspacing="0"
+        >
+          <thead>
+            <tr align="center">
+              <th>No</th>
+              <th>Nama</th>
+              <th>No. Punggung</th>
+              <th>Posisi</th>
+              <th>Foto</th>
+              <th>Klub</th>
+              <th>Naturalisasi/Tanggal Lahir</th>
+              <th>Action</th>
+            </tr>
+          </thead>  
+          <tbody>
+            <% for(let i = 0; i < timnas.length; i++){ %>
+          <tr>
+            <td><%= i +1 %></td>
+            <td><%= timnas[i].nama %></td>
+            <td align="center"><%= timnas[i].noPunggung %></td>
+            <td><%= timnas[i].posisi %></td>
+            <td><img src="<%= timnas[i].foto %>" class="image" width="100px"></td>
+            <td><%= timnas[i].klub %></td>
+            <td class="tanggal-lahir" align="center-"><%= timnas[i].naturalisasi %></td>
+            <td class="text-center">
+                <div class="btn-group" role="group">
+                    <form action="/timnas/<%= timnas[i].id %>?_method=DELETE" class="btn-group" role="group" method="POST">
+                    <a
+                    href="javascript:void()"
+                    class="btn btn-outline-warning btn-sm button-update"
+                    data-id="<%= timnas[i].id %>"
+                    data-nama="<%= timnas[i].nama %>"
+                    data-noPunggung="<%= timnas[i].noPunggung %>"
+                    data-posisi="<%= timnas[i].posisi %>"
+                    data-foto="<%= timnas[i].foto %>"
+                    data-klub="<%= timnas[i].klub %>"
+                    data-naturalisasi="<%= timnas[i].naturalisasi %>"
+                    >Edit</a>
+                  <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Hapus data timnas?');">
+                    Delete
+                  </button>
+                  </form>
+                  <a href="/detail?id=<%= timnas[i].id %>" class="btn btn-outline-primary btn-sm">View</a>
+                </div>
+            </td>
+          </tr>
+             <% } %>
+          </tbody>
+        </table>
+      </div>
+    </div>

@@ -1,0 +1,29 @@
+body {
+  padding: 0;
+  margin: 0;
+  height: 100vh; /* Mengisi tinggi layar penuh */
+  background-color: #007bff; /* Warna latar belakang fallback */
+  background-image: linear-gradient(to bottom, #2162a7, #55a4f3); /* Gradien biru */
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: #fff; /* Warna teks putih */
+  background-attachment: fixed;
+}
+
+nav {
+    background-color: #404040; /* Warna latar belakang navigasi */
+    color: white; /* Warna teks */
+    padding: 10px 0; /* Padding atas dan bawah */
+    text-align: center; /* Posisi teks di tengah */
+  }
+
+.card {
+    margin: 80px 250px;
+    background-image: linear-gradient(to bottom, #2162a7, #55a4f3); /* Gradien biru */
+}
+.card {
+    margin: 80px 250px;
+    padding: 20px; /* Padding dalam elemen card */
+    border-radius: 10px; /* Membuat sudut card menjadi bulat */
+    background-image: linear-gradient(to bottom, #d50000, #df5656); /* Gradien merah-putih-merah */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
+  }
